@@ -37,16 +37,16 @@ driver = webdriver.Chrome(options = opt, executable_path = path)
 
 driver.get('https://examsection.aec.edu.in/Login.aspx')
 
-le_students = ['20A95A0501', '20A95A0502', '20A95A0503', '20A95A0504', '20A95A0505', '20A95A0506', '20A95A0507']
+# le_students = ['20A95A0501', '20A95A0502', '20A95A0503', '20A95A0504', '20A95A0505', '20A95A0506', '20A95A0507']
 
 for student in le_students:
     start = perf_counter()
-    # if(i == 12): continue
+    if(i == 12): continue
     
-    # student = "19A91A05"
+    student = "19A91A05"
     
-    # if((i>=2) and (i<=9)): student += ("0" + str(i))
-    # else: student += str(i)
+    if((i>=2) and (i<=9)): student += ("0" + str(i))
+    else: student += str(i)
 
     data = list()
     try:
@@ -63,32 +63,32 @@ for student in le_students:
         data.append(Ht_No.text)
         driver.execute_script("javascript:__doPostBack('ctl00$lnkOverallMarks','')")
 
-        # sem1 = driver.find_element_by_xpath('//*[@id="cpStudCorner_pnMarks"]/table[1]/tbody/tr[13]/td[3]')
-        # print(sem1.text)
+        sem1 = driver.find_element_by_xpath('//*[@id="cpStudCorner_pnMarks"]/table[1]/tbody/tr[13]/td[3]')
+        print(sem1.text)
     
-        # sem1SGPA = re.findall('[0-9]{1}\.?[0-9]*',sem1.text)[0]
-        # data.append(sem1SGPA)
+        sem1SGPA = re.findall('[0-9]{1}\.?[0-9]*',sem1.text)[0]
+        data.append(sem1SGPA)
     
-        # sem2 = driver.find_element_by_xpath('//*[@id="cpStudCorner_pnMarks"]/table[2]/tbody/tr[13]/td[3]')
-        # print(sem2.text)
+        sem2 = driver.find_element_by_xpath('//*[@id="cpStudCorner_pnMarks"]/table[2]/tbody/tr[13]/td[3]')
+        print(sem2.text)
     
-        # sem2SGPA = re.findall('[0-9]{1}\.?[0-9]*',sem2.text)[0]
-        # data.append(sem2SGPA)
+        sem2SGPA = re.findall('[0-9]{1}\.?[0-9]*',sem2.text)[0]
+        data.append(sem2SGPA)
 
-        # sem3 = driver.find_element_by_xpath('//*[@id="cpStudCorner_pnMarks"]/table[3]/tbody/tr[13]/td[3]')
-        # print(sem3.text)
+        sem3 = driver.find_element_by_xpath('//*[@id="cpStudCorner_pnMarks"]/table[3]/tbody/tr[13]/td[3]')
+        print(sem3.text)
     
-        # sem3res = re.findall('[0-9]{1}\.?[0-9]*',sem3.text)
-        # data.append(sem3res[0])
-        # data.append(sem3res[1])
+        sem3res = re.findall('[0-9]{1}\.?[0-9]*',sem3.text)
+        data.append(sem3res[0])
+        data.append(sem3res[1])
         
-        sem = driver.find_element_by_xpath('//*[@id="cpStudCorner_pnMarks"]/table/tbody/tr[13]/td[3]')
-        print(sem.text)
+        # sem = driver.find_element_by_xpath('//*[@id="cpStudCorner_pnMarks"]/table/tbody/tr[13]/td[3]')
+        # print(sem.text)
         
-        sem_res = re.findall('[0-9]{1}\.?[0-9]*',sem.text)
+        # sem_res = re.findall('[0-9]{1}\.?[0-9]*',sem.text)
         
-        data.append(sem_res[0])
-        data.append(sem_res[1])
+        # data.append(sem_res[0])
+        # data.append(sem_res[1])
         
         log_out = driver.find_element_by_id('btnLogout')
         driver.execute_script("arguments[0].click();", log_out)
